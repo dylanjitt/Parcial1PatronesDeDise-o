@@ -9,9 +9,9 @@ public class NonTerminalExpression extends AbstractExpression {
 	private Context context;
 	
 	public NonTerminalExpression (String input){
-        context = new Context(input.replace(" ",""));
-        for (String charInput :input.split(" ")){
-            switch (charInput.toUpperCase()){
+        context = new Context(input.replace(" ",""));//como a quiero b Para c ->ComoaQuierobParac
+        for (String charInput :input.split(" ")){//[como,a,quiero,b,para,c]
+            switch (charInput){
                 case "Como":
                     grammar.add(new TComo());
                     break;
@@ -22,7 +22,7 @@ public class NonTerminalExpression extends AbstractExpression {
                     grammar.add(new TPara());
                     break;
                 default:
-                	
+                	grammar.add(new TDefault(charInput));
                     break;
             }
 
